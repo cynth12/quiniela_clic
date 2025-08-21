@@ -10,19 +10,26 @@
     <h1>Quiniela ClicConecta Zas!</h1>
     <p>Premio estimado: $350,000 MXN</p>
     <form id="quinielaForm">
-  <h2>Jornada 04 - Quiniela Zas!</h2>
-  <div class="partido">
-    <label>América vs Tigres</label>
-    <select name="partido1">
-      <option value="local">América</option>
-      <option value="empate">Empate</option>
-      <option value="visitante">Tigres</option>
-    </select>
-  </div>
-  <!-- Repite para cada partido -->
-  <button type="submit">Generar y compartir</button>
-</form>
-<div id="resultado"></div>
+      <div class="match">
+        <label>Juárez vs Santos</label>
+        <input type="text" placeholder="Ej: 2-1">
+      </div>
+      <div class="match">
+        <label>Querétaro vs San Luis</label>
+        <input type="text" placeholder="Ej: 1-1">
+      </div>
+      <!-- Agrega más partidos aquí -->
+      <div class="match suplente">
+        <label>Partido Suplente: Newcastle vs Liverpool</label>
+        <input type="text" placeholder="Ej: 3-2">
+      </div>
+      <div class="actions">
+        <input type="text" placeholder="Tu nombre">
+        <button type="submit">Enviar Quiniela</button>
+        <button type="button" onclick="limpiar()">Limpiar</button>
+        <button type="button" onclick="aleatorio()">Aleatorio</button>
+      </div>
+    </form>
     <p class="costo">Costo: $25 MXN</p>
   </div>
   <script src="script.js"></script>
