@@ -1,24 +1,12 @@
-function limpiar() {
-  document.querySelectorAll('input[type="text"]').forEach(input => input.value = '');
-}
-
-function aleatorio() {
-  document.querySelectorAll('.match input').forEach(input => {
-    const golesA = Math.floor(Math.random() * 5);
-    const golesB = Math.floor(Math.random() * 5);
-    input.value = `${golesA}-${golesB}`;
-  });
-}
-
 document.getElementById('quinielaForm').addEventListener('submit', function(e) {
   e.preventDefault();
-  alert('¡Quiniela enviada correctamente!');
 
-  // Generar resumen
   const nombre = document.getElementById('nombre').value || 'Sin nombre';
-  let resumen = `📝 Quiniela Zas! - Semana 1\n👤 Nombre: ${nombre}\n\n`;
+  const telefono = document.getElementById('telefono').value || 'No proporcionado';
 
-  document.querySelectorAll('.match').forEach((match, index) => {
+  let resumen = `📝 Quiniela Zas! - Semana 1\n👤 Nombre: ${nombre}\n📱 Tel: ${telefono}\n\n`;
+
+  document.querySelectorAll('.match').forEach(match => {
     const equipos = match.querySelector('label').textContent;
     const resultado = match.querySelector('input').value;
     resumen += `⚽ ${equipos}: ${resultado}\n`;
@@ -26,11 +14,13 @@ document.getElementById('quinielaForm').addEventListener('submit', function(e) {
 
   resumen += `\n💰 Costo: $25 MXN`;
 
-  // Generar link de WhatsApp
-  const encoded = encodeURIComponent(resumen);
-  const waLink = `https://wa.me/?text=${encoded}`;
+  // Tu número de WhatsApp (sin espacios, con código país)
+  const tuNumero = '5219841314389'; // ← reemplaza con tu número real
 
-  // Mostrar botón para compartir
+  const waLink = `https://wa.me/${tuNumero}?text=${encodeURIComponent(resumen)}`;
+
+  // Mostrar botón para enviar
   const resultadoDiv = document.getElementById('resultado');
-  resultadoDiv.innerHTML = `<a href="${waLink}" target="_blank">📲 Compartir por WhatsApp</a>`;
+  resultadoDiv.innerHTML = `<a href="${waLink}" target="_blank">📲 Enviar a ClicConecta Zas!</a>`;
 });
+
