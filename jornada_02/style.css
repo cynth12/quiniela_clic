@@ -70,3 +70,19 @@ select, input[type="text"] {
   background: #e0f7fa;
   border-radius: 6px;
 }
+
+#enviar {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+#enviar i {
+  font-size: 20px;
+}
