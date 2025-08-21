@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiniela ClicConecta Zas! - Semana 1</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Quiniela ClicConecta Zas!</h1>
+    <p>Premio estimado: $350,000 MXN</p>
+    <form id="quinielaForm">
+      <div class="match">
+        <label>Juárez vs Santos</label>
+        <input type="text" placeholder="Ej: 2-1">
+      </div>
+      <div class="match">
+        <label>Querétaro vs San Luis</label>
+        <input type="text" placeholder="Ej: 1-1">
+      </div>
+      <!-- Agrega más partidos aquí -->
+      <div class="match suplente">
+        <label>Partido Suplente: Newcastle vs Liverpool</label>
+        <input type="text" placeholder="Ej: 3-2">
+      </div>
+      <div class="actions">
+        <input type="text" placeholder="Tu nombre">
+        <button type="submit">Enviar Quiniela</button>
+        <button type="button" onclick="limpiar()">Limpiar</button>
+        <button type="button" onclick="aleatorio()">Aleatorio</button>
+      </div>
+    </form>
+    <p class="costo">Costo: $25 MXN</p>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
