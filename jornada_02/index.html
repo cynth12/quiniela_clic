@@ -42,10 +42,15 @@
       </div>
 
       <div class="acciones">
-        <button type="submit">Enviar Quiniela</button>
-        <button type="button" onclick="limpiar()">Limpiar</button>
-        <button type="button" onclick="aleatorio()">Aleatorio</button>
-      </div>
+    <span class="input-group-text bg-success">
+        <a id="enviarWhatsapp" target="_blank" style="cursor: pointer;" class="font-weight-bold text-white">
+                        Enviar
+        <i class="socicon-whatsapp text-white"></i>
+         </a>
+    </span>
+    <button type="button" onclick="limpiar()">Limpiar</button>
+     <button type="button" onclick="aleatorio()">Aleatorio</button>
+</div>
     </form>
 
     <div id="resultado"></div>
@@ -54,3 +59,5 @@
   <script src="script.js"></script>
 </body>
 </html>
+
+
