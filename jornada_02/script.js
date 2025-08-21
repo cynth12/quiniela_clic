@@ -1,26 +1,37 @@
-document.getElementById('quinielaForm').addEventListener('submit', function(e) {
+document.getElementById("quinielaForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
-  const nombre = document.getElementById('nombre').value || 'Sin nombre';
-  const telefono = document.getElementById('telefono').value || 'No proporcionado';
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const selects = document.querySelectorAll("select");
+  let resultados = [];
 
-  let resumen = `📝 Quiniela Zas! - Semana 1\n👤 Nombre: ${nombre}\n📱 Tel: ${telefono}\n\n`;
-
-  document.querySelectorAll('.match').forEach(match => {
-    const equipos = match.querySelector('label').textContent;
-    const resultado = match.querySelector('input').value;
-    resumen += `⚽ ${equipos}: ${resultado}\n`;
+  selects.forEach((select, index) => {
+    const label = select.previousElementSibling.textContent;
+    const valor = select.options[select.selectedIndex].text;
+    resultados.push(`${label}: ${valor}`);
   });
 
-  resumen += `\n💰 Costo: $25 MXN`;
+  const mensaje = `📝 Quiniela de ${nombre}\n${resultados.join("\n")}`;
+  const whatsappLink = `https://wa.me/?text=${encodeURIComponent(mensaje)}`;
 
-  // Tu número de WhatsApp (sin espacios, con código país)
-  const tuNumero = '5219841314389'; // ← reemplaza con tu número real
-
-  const waLink = `https://wa.me/${tuNumero}?text=${encodeURIComponent(resumen)}`;
-
-  // Mostrar botón para enviar
-  const resultadoDiv = document.getElementById('resultado');
-  resultadoDiv.innerHTML = `<a href="${waLink}" target="_blank">📲 Enviar a ClicConecta Zas!</a>`;
+  document.getElementById("resultado").innerHTML = `
+    <p>Tu quiniela fue generada correctamente ✅</p>
+    <a href="${whatsappLink}" target="_blank">📲 Compartir por WhatsApp</a>
+  `;
 });
+
+function limpiar() {
+  document.getElementById("quinielaForm").reset();
+  document.getElementById("resultado").innerHTML = "";
+}
+
+function aleatorio() {
+  const selects = document.querySelectorAll("select");
+  selects.forEach(select => {
+    const opciones = select.options;
+    const randomIndex = Math.floor(Math.random() * opciones.length);
+    select.selectedIndex = randomIndex;
+  });
+}
 
