@@ -1,37 +1,196 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en" translate="no">
 <head>
-  <meta charset="UTF-8">
-  <title>Quiniela ClicConecta Zas! - Semana 2</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="description" content="¡Registra aquí tus quinielas! - Quiniela Liga MX Jalisco">
+    <meta name="keywords" content="Quiniela, Liga MX, Jalisco, Pronósticos, Quiniela Liga MX">
+    <title>Quiniela Jalisco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://quinielajal.github.io/Registro-1/11/styles11.css">
+    <link rel="icon" href="icon.jpg">
+    <link rel="apple-touch-icon" href="icon.jpg">
+    <link rel="shortcut icon" href="icon.jpg" type="image/x-icon">
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://quinielajal.github.io/Registro-1/11/main11.js"></script>
+    <script src="https://quinielajal.github.io/Registro-1/var.js"></script>
+    <script src="var.js"></script>
 </head>
+
 <body>
-  <div class="container">
-    <h1>Quiniela ClicConecta Zas!</h1>
-    <p>Premio estimado: $350,000 MXN</p>
-    <form id="quinielaForm">
-      <div class="match">
-        <label>America vs Cruz Azul</label>
-        <input type="text" placeholder="Ej: 2-1">
-      </div>
-      <div class="match">
-        <label>Puebla vs Chivas</label>
-        <input type="text" placeholder="Ej: 1-1">
-      </div>
-      <!-- Agrega más partidos aquí -->
-      <div class="match suplente">
-        <label>Partido Suplente: Newcastle vs Liverpool</label>
-        <input type="text" placeholder="Ej: 3-2">
-      </div>
-      <div class="actions">
-        <input type="text" placeholder="Tu nombre">
-        <button type="submit">Enviar Quiniela</button>
-        <button type="button" onclick="limpiar()">Limpiar</button>
-        <button type="button" onclick="aleatorio()">Aleatorio</button>
-      </div>
-    </form>
-    <p class="costo">Costo: $25 MXN</p>
-  </div>
-  <script src="script.js"></script>
+    <p id='bolsa'>
+        <span id="bolsatxt"></span>
+        <span id="cantidad">
+            <span id="sub1"></span>
+            <span id="sub2"></span>
+            <span id="sub3"></span>
+            <span id="sub4"></span>
+        </span>
+    </p>
+
+    <!-- Quiniela -->
+    <div class="quiniela" id="quiniela">
+        <div class="aux"><h3 style="padding: 5px 7px" onclick="clean()"><ion-icon name="close-outline"></ion-icon></h3></div>
+        <div class="partido">
+            <span id="L1" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E1" onclick="selection(this)"><div id="touchIconDiv"><i class="material-icons" id="touchIcon">touch_app</i></div></span>
+            <div id="_"></div>
+            <span id="V1" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L2" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E2" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V2" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L3" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E3" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V3" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L4" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E4" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V4" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L5" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E5" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V5" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L6" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E6" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V6" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L7" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E7" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V7" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L8" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E8" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V8" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L9" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E9" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V9" onclick="selection(this)"></span>
+        </div>
+        <div class="partido">
+            <span id="L10" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E10" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V10" onclick="selection(this)"></span>
+        </div>
+	<div class=aux2></div>
+        <div class="partido">
+            <span id="L11" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="E11" onclick="selection(this)"></span>
+            <div id="_"></div>
+            <span id="V11" onclick="selection(this)"></span>
+        </div>
+        <h1 id="text" class="text-lg"></h1>
+    </div>
+
+    <!-- Controles -->
+    <div class="controles row g-0 d-flex">
+
+        <div class="col-8 p-1" style="position:relative">
+            <div id="nombretext">Nombre</div>
+            <div id="nombrebox">
+                <div class="row g-0">
+                    <div class="col-11 position-relative">
+                        <div id="touchIconDivName">
+                            <i class="material-icons" id="touchIconName">touch_app</i>
+                        </div>
+                        <input id="nombre" type="text" placeholder="" maxlength="20" spellcheck="false" autocomplete="off" oninput="updateIcons(this)" onfocus="nameIn()" onfocusout="nameOut(this)" >
+                    </div>
+                    <div class="col-1 d-flex align-items-end">
+                        <label id="borrarnombre" onclick="clearname()">
+                            <ion-icon name="backspace"></ion-icon>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-4 p-1">
+            <h2 id="botonagregar" class="boton" onclick="save()">
+                <div id="touchIconDiv2"><i class="material-icons" id="touchIcon2">touch_app</i></div>
+                AGREGAR <ion-icon name="add-outline" style="font-size:20px;"></ion-icon>
+            </h2>
+        </div>
+
+        <div class="col-4 p-1">
+            <h2 id="botonenviar" class="boton" onclick="send()"> ENVIAR <span>0</span>&nbsp <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-5.png" height="20px" id="imgwsp"></ion-icon></h2>
+        </div>
+
+        <div class="col-4 p-1"> 
+            <label id="botonborrar" class="boton" onclick="deleteall()">
+                BORRAR TODO<ion-icon name="trash-outline" id="trash" style="font-size:medium"></ion-icon>
+            </label>
+        </div>
+
+        <div class="col-4 p-1">
+            <label id="random" class="boton" onclick="random()">
+                AL AZAR
+            </label>
+            <label id="checkcombinaciones" class="boton allowcomb" onclick="allowcombination()">
+                DOBLES Y TRIPLES
+            </label>
+        </div>
+
+
+    </div>  
+    <br>
+
+    <!-- Lista -->
+    <div>
+        <span id="costo">Costo: <span id="costoSpan">$0</span></span>
+        <span id="total">Total: $0</span><br>
+    </div>
+
+    <div>
+        <span id="numquinielas">0 Quiniela(s)</span>
+    </div>
+
+    <br>
+
+    <div id="listaContainer" translate="no">
+        <table id="lista">
+        </table>
+    </div>
+    <div style="border-radius: 40px;color: black;text-align: center;width: fit-content;margin: auto;margin-top: 20px;background: #ffffff42;padding: 3px 32px;">
+        Desarrollado por 
+        <a href="https://wa.link/6bdpmj" style="color:blue">
+          PegasusDev
+        </a>
+    </div>
+    <br>
+<script src="script.js"></script>
 </body>
 </html>
