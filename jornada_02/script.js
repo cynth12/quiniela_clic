@@ -13,7 +13,7 @@ document.getElementById("quinielaForm").addEventListener("submit", function (e) 
   });
 
   const mensaje = `📝 Quiniela de ${nombre}\n${resultados.join("\n")}`;
-  const numeroDestino = "5217731295000"; // ← Reemplaza con tu número real
+  const numeroDestino = "5217331295000"; // ← Reemplaza con tu número real
   const whatsappLink = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
 
 
