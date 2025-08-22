@@ -44,13 +44,21 @@
       </div>
 
       <div class="acciones">
-        <button type="submit" id="enviar">
-          <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-        </button>
-        <button type="button" onclick="limpiar()">Limpiar</button>
-        <button type="button" onclick="aleatorio()">Aleatorio</button>
+        <button type="button" onclick="agregarQuiniela()">Agregar Quiniela</button>
+  <button type="button" onclick="borrarTodo()">Borrar Todo</button>
+  <button type="button" onclick="limpiar()">Limpiar</button>
+  <button type="button" onclick="aleatorio()">Aleatorio</button>
+  <button type="button" id="btnWhatsapp" onclick="enviarPorWhatsapp()" disabled>
+    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
       </div>
     </form>
+    <div class="acciones">
+  
+</div>
+
+<div id="resumenTotal" class="resumen-total">0 quinielas – Total: $0 MXN</div>
+<div id="listaQuinielas" class="lista-quinielas"></div>
+
 
     <div id="resultado"></div>
   </section>

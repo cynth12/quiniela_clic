@@ -86,3 +86,20 @@ select, input[type="text"] {
 #enviar i {
   font-size: 20px;
 }
+
+.resumen-total {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.lista-quinielas {
+  margin-top: 10px;
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.quiniela-item {
+  margin-bottom: 10px;
+}
