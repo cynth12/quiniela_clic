@@ -50,7 +50,6 @@ function agregarQuiniela() {
   const telefono = document.getElementById("telefono").value.trim();
   const resultados = obtenerResultadosVisuales();
 
-  // Validar que todos los partidos tengan selección
   if (resultados.some(r => r.includes(": —"))) {
     alert("Por favor selecciona una opción para todos los partidos.");
     return;
@@ -59,8 +58,19 @@ function agregarQuiniela() {
   const resumen = { nombre, telefono, resultados };
   quinielas.push(resumen);
   actualizarLista();
-  limpiar();
+  limpiarFormularioSolo(); // ✅ Solo borra nombre y teléfono
 }
+
+
+  function limpiarFormularioSolo() {
+  document.getElementById("nombre").value = "";
+  document.getElementById("telefono").value = "";
+  document.getElementById("resultado").innerHTML = "";
+}
+
+
+
+
 
 // Actualizar lista visual de quinielas
 function actualizarLista() {
