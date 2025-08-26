@@ -121,16 +121,12 @@ function generarMensajeWhatsapp() {
 
 // Enviar por WhatsApp usando número ingresado
 function enviarPorWhatsapp() {
-  const telefono = document.getElementById("telefono").value.trim();
-  if (!telefono) {
-    alert("Por favor ingresa un número de teléfono.");
-    return;
-  }
-
+  const numeroOrganizador = "5217331295000"; // ← Cambia este al número real del organizador
   const mensaje = generarMensajeWhatsapp();
-  const url = `https://wa.me/${telefono}?text=${mensaje}`;
+  const url = `https://wa.me/${numeroOrganizador}?text=${mensaje}`;
   window.open(url, "_blank");
 }
+
 
 // Envío individual por submit (si lo usas)
 document.getElementById("quinielaForm").addEventListener("submit", function (e) {
