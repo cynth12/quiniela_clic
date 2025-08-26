@@ -169,18 +169,7 @@ function actualizarResumenFinal() {
     selecciones.push(valor);
   });
 
-  document.getElementById("resumenFinalVisual").textContent = selecciones.join(", ");
-}
 
-document.querySelectorAll(".opcion").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const grupo = btn.closest(".partido").querySelectorAll(".opcion");
-    grupo.forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-    actualizarResumenVisual();
-    actualizarResumenFinal();
-  });
-});
 
 
 
