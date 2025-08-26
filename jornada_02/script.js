@@ -169,6 +169,8 @@ function actualizarResumenFinal() {
     selecciones.push(valor);
   });
 
+  document.getElementById("resumenFinalVisual").textContent = selecciones.join(", ");
+}
 
 
 
