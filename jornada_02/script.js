@@ -1,7 +1,34 @@
+// Obtener solo letras seleccionadas (sin nombres de partidos)
+function obtenerSoloLetras() {
+  const partidos = document.querySelectorAll(".partido");
+  let letras = [];
+
+  partidos.forEach(partido => {
+    const seleccionada = partido.querySelector(".opcion.selected");
+    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
+    letras.push(valor);
+  });
+
+  return letras;
+}
+
+// Actualizar resumen final con solo letras
+function actualizarResumenFinal() {
+  const letras = obtenerSoloLetras();
+  document.getElementById("resumenFinalVisual").textContent = letras.join(", ");
+}
+
 // Activar selección visual de botones
+document.querySelectorAll(".opcion").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const grupo = btn.closest(".partido").querySelectorAll(".opcion");
+    grupo.forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    actualizarResumenFinal();
+  });
+});
 
-
-// Obtener resultados desde botones visuales
+// Obtener resultados con nombres de partidos (para WhatsApp o lista completa)
 function obtenerResultadosVisuales() {
   const partidos = document.querySelectorAll(".partido");
   let resultados = [];
@@ -27,6 +54,8 @@ function aleatorio() {
     opciones.forEach(btn => btn.classList.remove("selected"));
     opciones[randomIndex].classList.add("selected");
   });
+
+  actualizarResumenFinal();
 }
 
 // Limpiar formulario y resultados
@@ -34,10 +63,11 @@ function limpiar() {
   document.getElementById("quinielaForm").reset();
   document.getElementById("resultado").innerHTML = "";
 
-  // Limpiar selecciones visuales
   document.querySelectorAll(".opcion").forEach(btn => {
     btn.classList.remove("selected");
   });
+
+  actualizarResumenFinal();
 }
 
 // Variables globales
@@ -50,7 +80,6 @@ function agregarQuiniela() {
   const telefono = document.getElementById("telefono").value.trim();
   const resultados = obtenerResultadosVisuales();
 
-  // Validar que todos los partidos tengan selección
   if (resultados.some(r => r.includes(": —"))) {
     alert("Por favor selecciona una opción para todos los partidos.");
     return;
@@ -89,6 +118,7 @@ function actualizarLista() {
 function borrarTodo() {
   quinielas = [];
   actualizarLista();
+  actualizarResumenFinal();
 }
 
 // Generar mensaje para WhatsApp
@@ -122,7 +152,7 @@ function enviarPorWhatsapp() {
   window.open(url, "_blank");
 }
 
-// Envío individual por submit (si lo usas)
+// Envío individual por submit
 document.getElementById("quinielaForm").addEventListener("submit", function (e) {
   e.preventDefault();
 
@@ -143,47 +173,3 @@ document.getElementById("quinielaForm").addEventListener("submit", function (e) 
     <a href="${whatsappLink}" target="_blank">📲 Compartir por WhatsApp</a>
   `;
 });
-
-
-function actualizarResumenVisual() {
-  const partidos = document.querySelectorAll(".partido");
-  const selecciones = [];
-
-  partidos.forEach(partido => {
-    const seleccionada = partido.querySelector(".opcion.selected");
-    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
-    selecciones.push(valor);
-  });
-
-  document.getElementById("resumenVisual").textContent = selecciones.join(", ");
-}
-
-
-function actualizarResumenFinal() {
-  const partidos = document.querySelectorAll(".partido");
-  const selecciones = [];
-
-  partidos.forEach(partido => {
-    const seleccionada = partido.querySelector(".opcion.selected");
-    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
-    selecciones.push(valor);
-  });
-
-  document.getElementById("resumenFinalVisual").textContent = selecciones.join(", ");
-}
-
-document.querySelectorAll(".opcion").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const grupo = btn.closest(".partido").querySelectorAll(".opcion");
-    grupo.forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-    actualizarResumenVisual();
-    actualizarResumenFinal();
-  });
-});
-
-
-
-
-
-
