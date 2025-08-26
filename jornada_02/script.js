@@ -1,15 +1,29 @@
 const costoPorQuiniela = 10;
 const quinielas = [];
 
+function seleccionarOpcion(btn) {
+  const fila = btn.closest("tr");
+  fila.querySelectorAll(".opcion").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
+  actualizarResumenFinal();
+}
+
 function obtenerSoloLetras() {
-  const botonesSeleccionados = document.querySelectorAll(".opcion.selected");
-  return Array.from(botonesSeleccionados).map(btn => btn.textContent.trim());
+  const partidos = document.querySelectorAll("tr.partido");
+  const letras = [];
+
+  partidos.forEach(fila => {
+    const seleccionada = fila.querySelector(".opcion.selected");
+    letras.push(seleccionada ? seleccionada.textContent.trim() : "—");
+  });
+
+  return letras;
 }
 
 function actualizarResumenFinal() {
   const letras = obtenerSoloLetras();
-  const resumen = letras.length > 0 ? letras.join(", ") : "—";
-  document.getElementById("resumenFinal").textContent = resumen;
+  const resumen = letras.join(", ");
+  document.getElementById("resumenFinalVisual").textContent = resumen;
 }
 
 function agregarQuiniela() {
@@ -17,7 +31,7 @@ function agregarQuiniela() {
   const telefono = document.getElementById("telefono").value.trim();
   const letras = obtenerSoloLetras();
 
-  if (letras.length === 0 || letras.includes("—")) {
+  if (letras.includes("—")) {
     alert("Por favor selecciona una opción para todos los partidos.");
     return;
   }
@@ -25,8 +39,8 @@ function agregarQuiniela() {
   const resumen = { nombre, telefono, letras };
   quinielas.push(resumen);
   actualizarLista();
-  limpiarSeleccion(); // Solo limpia botones, no borra el resumen
-  actualizarResumenFinal(); // Vuelve a calcular el resumen
+  limpiarSeleccion();
+  actualizarResumenFinal();
 }
 
 function actualizarLista() {
@@ -56,20 +70,16 @@ function limpiarSeleccion() {
   });
 }
 
-function seleccionarOpcion(btn) {
-  const grupo = btn.closest(".grupo-opciones");
-  grupo.querySelectorAll(".opcion").forEach(b => b.classList.remove("selected"));
-  btn.classList.add("selected");
-  actualizarResumenFinal();
-}
+function aleatorio() {
+  const partidos = document.querySelectorAll("tr.partido");
 
-function generarAleatorio() {
-  document.querySelectorAll(".grupo-opciones").forEach(grupo => {
-    const opciones = grupo.querySelectorAll(".opcion");
+  partidos.forEach(fila => {
+    const opciones = fila.querySelectorAll(".opcion");
     const aleatoria = opciones[Math.floor(Math.random() * opciones.length)];
     opciones.forEach(b => b.classList.remove("selected"));
     aleatoria.classList.add("selected");
   });
+
   actualizarResumenFinal();
 }
 
@@ -90,3 +100,5 @@ function enviarPorWhatsapp() {
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
+
+
