@@ -192,3 +192,31 @@ select, input[type="text"] {
 }
 
 
+.whatsapp-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#btnWhatsapp {
+  background-color: #25D366;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+#btnWhatsapp i {
+  font-size: 18px;
+}
+
+#btnWhatsapp:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
