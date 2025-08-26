@@ -1,11 +1,5 @@
 // Activar selección visual de botones
-document.querySelectorAll(".opcion").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const grupo = btn.parentElement.querySelectorAll(".opcion");
-    grupo.forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-  });
-});
+
 
 // Obtener resultados desde botones visuales
 function obtenerResultadosVisuales() {
