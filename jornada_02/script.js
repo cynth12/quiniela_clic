@@ -25,7 +25,8 @@ function agregarQuiniela() {
   const resumen = { nombre, telefono, letras };
   quinielas.push(resumen);
   actualizarLista();
-  limpiar();
+  limpiarSeleccion(); // Solo limpia botones, no borra el resumen
+  actualizarResumenFinal(); // Vuelve a calcular el resumen
 }
 
 function actualizarLista() {
@@ -49,15 +50,10 @@ function actualizarLista() {
   document.getElementById("btnWhatsapp").disabled = quinielas.length === 0;
 }
 
-function limpiar() {
-  document.getElementById("quinielaForm").reset();
-  document.getElementById("resultado").innerHTML = "";
-
+function limpiarSeleccion() {
   document.querySelectorAll(".opcion").forEach(btn => {
     btn.classList.remove("selected");
   });
-
-  actualizarResumenFinal();
 }
 
 function seleccionarOpcion(btn) {
@@ -94,4 +90,3 @@ function enviarPorWhatsapp() {
   const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
-
