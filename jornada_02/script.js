@@ -150,11 +150,6 @@ document.getElementById("quinielaForm").addEventListener("submit", function (e) 
   `;
 });
 
-document.querySelectorAll('.boton-opcion').forEach(boton => {
-  boton.addEventListener('click', () => {
-    const grupo = boton.parentElement;
-    grupo.querySelectorAll('.boton-opcion').forEach(b => b.classList.remove('seleccionado'));
-    boton.classList.add('seleccionado');
-  });
-});
+
+
 

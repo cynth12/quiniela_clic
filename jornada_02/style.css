@@ -149,18 +149,25 @@ select, input[type="text"] {
   border: 1px solid #ccc;
 }
 
-.boton-opcion {
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
-  padding: 6px 12px;
+.opcion {
+  padding: 8px 12px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
   cursor: pointer;
-  border-radius: 4px;
-  transition: background-color 0.2s;
+  font-weight: bold;
+  transition: all 0.2s ease;
 }
 
-.boton-opcion.seleccionado {
-  background-color: #ff4d4d;
+.opcion.selected {
+  background-color: #43a047; /* verde */
   color: white;
-  font-weight: bold;
+  border-color: #1b5e20;
+}
+
+.opciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 8px;
 }
 
