@@ -174,13 +174,14 @@ function actualizarResumenFinal() {
 
 document.querySelectorAll(".opcion").forEach(btn => {
   btn.addEventListener("click", () => {
-    const grupo = btn.closest("tr").querySelectorAll(".opcion");
+    const grupo = btn.closest(".partido").querySelectorAll(".opcion");
     grupo.forEach(b => b.classList.remove("selected"));
     btn.classList.add("selected");
-    actualizarResumenVisual();  // ya lo tienes
-    actualizarResumenFinal();  // este es el nuevo
+    actualizarResumenVisual();
+    actualizarResumenFinal();
   });
 });
+
 
 
 
