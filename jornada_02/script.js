@@ -1,64 +1,54 @@
-// Obtener solo letras seleccionadas (sin nombres de partidos)
+const costoPorQuiniela = 10;
+const quinielas = [];
+
 function obtenerSoloLetras() {
-  const partidos = document.querySelectorAll(".partido");
-  let letras = [];
-
-  partidos.forEach(partido => {
-    const seleccionada = partido.querySelector(".opcion.selected");
-    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
-    letras.push(valor);
-  });
-
-  return letras;
+  const botonesSeleccionados = document.querySelectorAll(".opcion.selected");
+  return Array.from(botonesSeleccionados).map(btn => btn.textContent.trim());
 }
 
-// Actualizar resumen final con solo letras
 function actualizarResumenFinal() {
   const letras = obtenerSoloLetras();
-  document.getElementById("resumenFinalVisual").textContent = letras.join(", ");
+  const resumen = letras.length > 0 ? letras.join(", ") : "—";
+  document.getElementById("resumenFinal").textContent = resumen;
 }
 
-// Activar selección visual de botones
-document.querySelectorAll(".opcion").forEach(btn => {
-  btn.addEventListener("click", () => {
-    const grupo = btn.closest(".partido").querySelectorAll(".opcion");
-    grupo.forEach(b => b.classList.remove("selected"));
-    btn.classList.add("selected");
-    actualizarResumenFinal();
-  });
-});
+function agregarQuiniela() {
+  const nombre = document.getElementById("nombre").value.trim();
+  const telefono = document.getElementById("telefono").value.trim();
+  const letras = obtenerSoloLetras();
 
-// Obtener resultados con nombres de partidos (para WhatsApp o lista completa)
-function obtenerResultadosVisuales() {
-  const partidos = document.querySelectorAll(".partido");
-  let resultados = [];
+  if (letras.length === 0 || letras.includes("—")) {
+    alert("Por favor selecciona una opción para todos los partidos.");
+    return;
+  }
 
-  partidos.forEach(partido => {
-    const nombrePartido = partido.getAttribute("data-partido");
-    const seleccionada = partido.querySelector(".opcion.selected");
-    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
-    resultados.push(`${nombrePartido}: ${valor}`);
-  });
-
-  return resultados;
+  const resumen = { nombre, telefono, letras };
+  quinielas.push(resumen);
+  actualizarLista();
+  limpiar();
 }
 
-// Aleatorizar selecciones visuales
-function aleatorio() {
-  const partidos = document.querySelectorAll(".partido");
+function actualizarLista() {
+  const lista = document.getElementById("listaQuinielas");
+  lista.innerHTML = "";
 
-  partidos.forEach(partido => {
-    const opciones = partido.querySelectorAll(".opcion");
-    const randomIndex = Math.floor(Math.random() * opciones.length);
-
-    opciones.forEach(btn => btn.classList.remove("selected"));
-    opciones[randomIndex].classList.add("selected");
+  quinielas.forEach((q, index) => {
+    const item = document.createElement("div");
+    item.classList.add("quiniela-item");
+    item.innerHTML = `
+      <strong>#${index + 1} – ${q.nombre || "Sin nombre"}</strong><br>
+      <span>${q.letras.join(", ")}</span>
+      <hr>
+    `;
+    lista.appendChild(item);
   });
 
-  actualizarResumenFinal();
+  const total = quinielas.length * costoPorQuiniela;
+  document.getElementById("resumenTotal").textContent = `${quinielas.length} quiniela(s) – Total: $${total} MXN`;
+
+  document.getElementById("btnWhatsapp").disabled = quinielas.length === 0;
 }
 
-// Limpiar formulario y resultados
 function limpiar() {
   document.getElementById("quinielaForm").reset();
   document.getElementById("resultado").innerHTML = "";
@@ -70,106 +60,38 @@ function limpiar() {
   actualizarResumenFinal();
 }
 
-// Variables globales
-let quinielas = [];
-const costoPorQuiniela = 10;
-
-// Agregar quiniela a la lista
-function agregarQuiniela() {
-  const nombre = document.getElementById("nombre").value.trim();
-  const telefono = document.getElementById("telefono").value.trim();
-  const resultados = obtenerResultadosVisuales();
-
-  if (resultados.some(r => r.includes(": —"))) {
-    alert("Por favor selecciona una opción para todos los partidos.");
-    return;
-  }
-
-  const resumen = { nombre, telefono, resultados };
-  quinielas.push(resumen);
-  actualizarLista();
-  limpiar();
-}
-
-// Actualizar lista visual de quinielas
-function actualizarLista() {
-  const lista = document.getElementById("listaQuinielas");
-  lista.innerHTML = "";
-
-  quinielas.forEach((q, index) => {
-    const item = document.createElement("div");
-    item.classList.add("quiniela-item");
-    item.innerHTML = `
-      <strong>#${index + 1} – ${q.nombre}</strong><br>
-      ${q.resultados.join("<br>")}
-      <hr>
-    `;
-    lista.appendChild(item);
-  });
-
-  const total = quinielas.length * costoPorQuiniela;
-  document.getElementById("resumenTotal").textContent = `${quinielas.length} quiniela(s) – Total: $${total} MXN`;
-
-  const btnWhatsapp = document.getElementById("btnWhatsapp");
-  btnWhatsapp.disabled = quinielas.length === 0;
-}
-
-// Borrar todas las quinielas
-function borrarTodo() {
-  quinielas = [];
-  actualizarLista();
+function seleccionarOpcion(btn) {
+  const grupo = btn.closest(".grupo-opciones");
+  grupo.querySelectorAll(".opcion").forEach(b => b.classList.remove("selected"));
+  btn.classList.add("selected");
   actualizarResumenFinal();
 }
 
-// Generar mensaje para WhatsApp
-function generarMensajeWhatsapp() {
-  let mensaje = `📋 *Resumen de Quinielas* (${quinielas.length} total)\n\n`;
-
-  quinielas.forEach((q, index) => {
-    mensaje += `*#${index + 1} – ${q.nombre}*\n`;
-    q.resultados.forEach(r => {
-      mensaje += `• ${r}\n`;
-    });
-    mensaje += `\n`;
+function generarAleatorio() {
+  document.querySelectorAll(".grupo-opciones").forEach(grupo => {
+    const opciones = grupo.querySelectorAll(".opcion");
+    const aleatoria = opciones[Math.floor(Math.random() * opciones.length)];
+    opciones.forEach(b => b.classList.remove("selected"));
+    aleatoria.classList.add("selected");
   });
-
-  const total = quinielas.length * costoPorQuiniela;
-  mensaje += `💰 *Total:* $${total} MXN`;
-
-  return encodeURIComponent(mensaje);
+  actualizarResumenFinal();
 }
 
-// Enviar por WhatsApp usando número ingresado
 function enviarPorWhatsapp() {
-  const telefono = document.getElementById("telefono").value.trim();
-  if (!telefono) {
-    alert("Por favor ingresa un número de teléfono.");
-    return;
-  }
+  if (quinielas.length === 0) return;
 
-  const mensaje = generarMensajeWhatsapp();
-  const url = `https://wa.me/${telefono}?text=${mensaje}`;
+  const nombre = document.getElementById("nombre").value.trim();
+  let mensaje = `Quinielas de ${nombre || "participante"}:\n\n`;
+
+  quinielas.forEach((q, i) => {
+    mensaje += `#${i + 1}: ${q.letras.join(", ")}\n`;
+  });
+
+  mensaje += `\nTotal: $${quinielas.length * costoPorQuiniela} MXN`;
+
+  const telefono = document.getElementById("telefono").value.trim();
+  const numero = telefono || "5217731295000"; // Reemplaza con número destino por defecto
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
   window.open(url, "_blank");
 }
 
-// Envío individual por submit
-document.getElementById("quinielaForm").addEventListener("submit", function (e) {
-  e.preventDefault();
-
-  const nombre = document.getElementById("nombre").value.trim();
-  const resultados = obtenerResultadosVisuales();
-
-  if (resultados.some(r => r.includes(": —"))) {
-    alert("Por favor selecciona una opción para todos los partidos.");
-    return;
-  }
-
-  const mensaje = `📝 Quiniela de ${nombre}\n${resultados.join("\n")}`;
-  const numeroDestino = "5217331295000"; // ← Reemplaza con tu número real
-  const whatsappLink = `https://wa.me/${numeroDestino}?text=${encodeURIComponent(mensaje)}`;
-
-  document.getElementById("resultado").innerHTML = `
-    <p>Tu quiniela fue generada correctamente ✅</p>
-    <a href="${whatsappLink}" target="_blank">📲 Compartir por WhatsApp</a>
-  `;
-});
