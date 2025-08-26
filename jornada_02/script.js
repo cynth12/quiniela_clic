@@ -145,20 +145,6 @@ document.getElementById("quinielaForm").addEventListener("submit", function (e) 
 });
 
 
-function actualizarResumenVisual() {
-  const partidos = document.querySelectorAll(".partido");
-  const selecciones = [];
-
-  partidos.forEach(partido => {
-    const seleccionada = partido.querySelector(".opcion.selected");
-    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
-    selecciones.push(valor);
-  });
-
-  document.getElementById("resumenVisual").textContent = selecciones.join(", ");
-}
-
-
 function actualizarResumenFinal() {
   const partidos = document.querySelectorAll(".partido");
   const selecciones = [];
