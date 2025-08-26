@@ -151,5 +151,30 @@ document.getElementById("quinielaForm").addEventListener("submit", function (e) 
 });
 
 
+function actualizarResumenVisual() {
+  const partidos = document.querySelectorAll(".partido");
+  const selecciones = [];
+
+  partidos.forEach(partido => {
+    const seleccionada = partido.querySelector(".opcion.selected");
+    const valor = seleccionada ? seleccionada.getAttribute("data-valor") : "—";
+    selecciones.push(valor);
+  });
+
+  document.getElementById("resumenVisual").textContent = selecciones.join(", ");
+}
+
+// Actualiza el resumen cada vez que se selecciona una opción
+document.querySelectorAll(".opcion").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const grupo = btn.closest("tr").querySelectorAll(".opcion");
+    grupo.forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+    actualizarResumenVisual();
+  });
+});
+
+
+
 
 

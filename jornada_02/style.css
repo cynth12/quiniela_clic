@@ -171,3 +171,24 @@ select, input[type="text"] {
   margin-top: 8px;
 }
 
+
+
+.tabla-quiniela {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.tabla-quiniela td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.tabla-quiniela td strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+

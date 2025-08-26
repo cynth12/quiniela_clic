@@ -18,97 +18,55 @@
     </header>
 
     <form id="quinielaForm">
-      <div class="grid-quiniela">
-  <!-- Partido 1 -->
-  <div class="partido" data-partido="Mazatlán vs Monterrey">
-    <p><strong>Mazatlán vs Monterrey</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 2 -->
-  <div class="partido" data-partido="Tijuana vs Toluca">
-    <p><strong>Tijuana vs Toluca</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 3 -->
-  <div class="partido" data-partido="Guadalajara vs Juárez">
-    <p><strong>Guadalajara vs Juárez</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 4 -->
-  <div class="partido" data-partido="América vs Puebla">
-    <p><strong>América vs Puebla</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 5 -->
-  <div class="partido" data-partido="Tigres vs Santos">
-    <p><strong>Tigres vs Santos</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 6 -->
-  <div class="partido" data-partido="Pumas vs Atl. San Luis">
-    <p><strong>Pumas vs Atl. San Luis</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 7 -->
-  <div class="partido" data-partido="Pachuca vs Atlas">
-    <p><strong>Pachuca vs Atlas</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 8 -->
-  <div class="partido" data-partido="Arsenal de Sarandí vs Patronato">
-    <p><strong>Arsenal de Sarandí vs Patronato</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-
-  <!-- Partido 9 -->
-  <div class="partido" data-partido="Chicago Fire vs New York RB">
-    <p><strong>Chicago Fire vs New York RB</strong></p>
-    <div class="opciones">
-      <button type="button" class="opcion" data-valor="L">L</button>
-      <button type="button" class="opcion" data-valor="E">E</button>
-      <button type="button" class="opcion" data-valor="V">V</button>
-    </div>
-  </div>
-</div>
+  <table class="tabla-quiniela">
+    <tbody>
+      <tr class="partido" data-partido="Mazatlán vs Monterrey">
+        <td><strong>Mazatlán</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Monterrey</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Tijuana vs Toluca">
+        <td><strong>Tijuana</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Toluca</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Guadalajara vs Juárez">
+        <td><strong>Guadalajara</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Juárez</strong></td>
+      </tr>
+      <tr class="partido" data-partido="América vs Puebla">
+        <td><strong>América</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Puebla</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Tigres vs Santos">
+        <td><strong>Tigres</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Santos</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Pumas vs Atl. San Luis">
+        <td><strong>Pumas</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Atl. San Luis</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Pachuca vs Atlas">
+        <td><strong>Pachuca</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Atlas</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Arsenal de Sarandí vs Patronato">
+        <td><strong>Arsenal</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>Patronato</strong></td>
+      </tr>
+      <tr class="partido" data-partido="Chicago Fire vs New York RB">
+        <td><strong>Chicago Fire</strong><br><button type="button" class="opcion" data-valor="L">L</button></td>
+        <td><button type="button" class="opcion" data-valor="E">E</button></td>
+        <td><button type="button" class="opcion" data-valor="V">V</button><br><strong>New York RB</strong></td>
+      </tr>
+    </tbody>
+  </table>
 
       <!-- Puedes duplicar más partidos aquí -->
 
