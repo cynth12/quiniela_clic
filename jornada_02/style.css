@@ -148,3 +148,19 @@ select, input[type="text"] {
   border-radius: 6px;
   border: 1px solid #ccc;
 }
+
+.boton-opcion {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.2s;
+}
+
+.boton-opcion.seleccionado {
+  background-color: #ff4d4d;
+  color: white;
+  font-weight: bold;
+}
+
