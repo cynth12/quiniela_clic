@@ -39,7 +39,7 @@ function aleatorio() {
 }
 
 let quinielas = [];
-const costoPorQuiniela = 25;
+const costoPorQuiniela = 10;
 
 function agregarQuiniela() {
   const nombre = document.getElementById("nombre").value.trim();
