@@ -50,6 +50,11 @@ function agregarQuiniela() {
   const telefono = document.getElementById("telefono").value.trim();
   const resultados = obtenerResultadosVisuales();
 
+  if (!nombre) {
+    alert("Por favor ingresa tu nombre.");
+    return;
+  }
+
   if (resultados.some(r => r.includes(": —"))) {
     alert("Por favor selecciona una opción para todos los partidos.");
     return;
@@ -60,7 +65,6 @@ function agregarQuiniela() {
   actualizarLista();
   limpiarFormularioSolo(); // ✅ Solo borra nombre y teléfono
 }
-
 
   function limpiarFormularioSolo() {
   document.getElementById("nombre").value = "";
